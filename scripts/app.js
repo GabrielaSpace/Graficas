@@ -33,6 +33,7 @@ async function starWars() {
       };
 
 
+
   
     new Chartist.Line('.ct-chart', data, options);
     console.log(arrayPelis,arrayFechas)
