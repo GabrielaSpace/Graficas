@@ -22,17 +22,42 @@ async function starWars() {
 
     console.log(arrayPelis,arrayFechas)
       const data = {
-        labels: [arrayPelis],
+        labels: arrayPelis,
         series:[arrayFechas],
     }
-
     const options = {
-        width: '100%',
-        height: '70%'
+      width: '30%',
+      height: '20%',
+      // Don't draw the line chart points
+      showPoint: true,
+      // Disable line smoothing
+      lineSmooth: false,
+      // X-Axis specific configuration
+      axisX: {
+          // We can disable the grid for this axis
+          showGrid: true,
+          // and also don't show the label
+          showLabel: true,
+      },
+      // Y-Axis specific configuration
+      axisY: {
+      
+          stepSize:2,
+          low: 1977,
+          high: 2005,
+          scaleMinSpace: 10,
+          divisor: arrayFechas.length,
+          onlyInteger: true,
+          ticks: arrayFechas,
+          // The label interpolation function enables you to modify the values
+          // used for the labels on each axis. Here we are converting the
+          // values into million pound.
+          // labelInterpolationFnc: function (value) {
+          //     return (value);
+          // }
+      }
+  };
     
-      };
-
-
 
   
     new Chartist.Line('.ct-chart', data, options);
@@ -66,12 +91,15 @@ for (let i = 0; i < elencoActor.length; i++){
  console.log(arrayActor,arrayFilms)
 
  const data = {
-  labels: [arrayActor],
+  labels: arrayActor,
   series: [arrayFilms],
 };
 const options = {
-  width: '100%',
-  height: '70%'
+  width: '30%',
+  height: '20%',
+  axisY:{onlyInteger: true,}
+  
+
 
 };
 new Chartist.Bar('.ct-chart2', data, options);
